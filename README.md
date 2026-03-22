@@ -12,7 +12,7 @@
     - what was done (description of your changes)
     - screenshot from option 6.
 
-Please pay attention that for **each** homework you shell create **separate branch**.
+Please pay attention that for **each** homework you shall create **separate branch**.
 
 You can merge your code only after getting an **approval** from a mentor and resolving all the **conflicts** if they exist.
 
