@@ -1,5 +1,4 @@
  .arbitrary-list,
- .arbitrary-list-entry,
 details > summary {
     list-style: none;
     padding: 12px 18px;
@@ -14,29 +13,16 @@ details > summary {
     user-select: none;
 }
 
-.arbitrary-list {
-    width: 100%;
-}
-
 .arbitrary-list[open] {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.arbitrary-list-entry {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
 details > summary:hover,
 .arbitrary-list-entry:hover {
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     transform: translateY(-1px);
-}
-
-details > summary::-webkit-details-marker {
-    display: none;
 }

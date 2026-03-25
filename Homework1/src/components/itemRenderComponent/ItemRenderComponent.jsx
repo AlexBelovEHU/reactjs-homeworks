@@ -1,11 +1,14 @@
-import './ItemRenderComponent.css'
-export default function ItemRenderComponent({ itemToRender, children, className = '' }) {
-    const htmlContent = itemToRender ?? children ?? ''
+import { Component } from 'react'
 
-    return (
-        <div
-            className={`item-render-component ${className}`.trim()}
-            dangerouslySetInnerHTML={{ __html: String(htmlContent) }}
-        />
-    )
+import './ItemRenderComponent.css'
+export default class ItemRenderComponent extends Component {
+    render() {
+        const { children, className = '' } = this.props
+
+        return (
+            <div className={`item-render-component ${className}`.trim()}>
+                {children}
+            </div>
+        )
+    }
 }

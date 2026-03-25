@@ -1,79 +1,39 @@
-import { useState } from 'react'
+import { Component } from 'react'
 import ItemRenderComponent from '../itemRenderComponent/ItemRenderComponent'
 import './ArbitraryList.css'
 
-function ArrayListSection({ data, recursiveKey }) {
-    const [isOpen, setIsOpen] = useState(false)
+export default class ArbitraryList extends Component {
+    render() {
+        const { data, recursiveKey = "Begin" } = this.props
 
-    return (
-        <details
-            className="list-item arbitrary-list"
-            onToggle={(event) => setIsOpen(event.currentTarget.open)}
-        >
-            <summary>{isOpen ? 'Collapse' : 'Expand'}</summary>
-            {data.map((item, index) => (
-                <ArbitraryList
-                    key={`${recursiveKey}-${index}`}
-                    data={item}
-                    recursiveKey={`${recursiveKey}-${index}`}
-                />
-            ))}
-        </details>
-    )
-}
+        const itemKeys = Reflect.ownKeys(data)
+        const isArray = Array.isArray(data)
 
-function ObjectListSection({ data, recursiveKey }) {
-    const [isOpen, setIsOpen] = useState(false)
-    const itemKeys = Reflect.ownKeys(data)
+        return (
+            <details className="list-item arbitrary-list">
+                <summary>{isArray ? 'Array' : 'Object'}</summary>
 
-    return (
-        <details
-            className="list-item arbitrary-list"
-            onToggle={(event) => setIsOpen(event.currentTarget.open)}
-        >
-            <summary>{isOpen ? 'Collapse' : 'Expand'}</summary>
-            {itemKeys.map((key) => {
-                const keyStr = String(key)
-                const childKey = `${recursiveKey}-${keyStr}`
+                {itemKeys.map((key) => {
+                    const item = data[key]
+                    const currentKey = !isArray ? String(key) : null
+                    const childKey = `${recursiveKey}-${currentKey}`
 
-                if (typeof data[key] === 'object' && data[key] !== null) {
+                    if (typeof item !== 'object' || item === null) {
+                        return (
+                            <ItemRenderComponent key={childKey} className="list-item primitive-item">
+                                {(currentKey ? currentKey + ': ' : '') + String(item)}
+                            </ItemRenderComponent>
+                        )
+                    }
                     return (
-                        <div className="list-item arbitrary-list-entry" key={childKey}>
-                            {keyStr}:
-                            <ArbitraryList data={data[key]} recursiveKey={childKey} />
-                        </div>
+                        <>
+                        {(currentKey ? currentKey + ': ' : '')}
+                        <ArbitraryList key={childKey} data={item} recursiveKey={childKey} />
+                        </>
                     )
-                }
 
-                return (
-                    <ItemRenderComponent className="list-item" key={childKey}>
-                        {`${keyStr}: ${data[key]}`}
-                    </ItemRenderComponent>
-                )
-            })}
-        </details>
-    )
-}
-
-export default function ArbitraryList({ data, recursiveKey = "Begin" }) {
-    if (data === null) {
-        return <ItemRenderComponent
-            className="list-item primitive-item">
-            null
-        </ItemRenderComponent>
+                })}
+            </details>
+        )
     }
-    if (typeof data !== 'object') {
-        return <ItemRenderComponent
-            className="list-item primitive-item">
-            {
-                data
-            }
-        </ItemRenderComponent>
-    }
-
-    if (Array.isArray(data)) {
-        return <ArrayListSection data={data} recursiveKey={recursiveKey} />
-    }
-
-    return <ObjectListSection data={data} recursiveKey={recursiveKey} />
 }

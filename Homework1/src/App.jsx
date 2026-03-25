@@ -1,11 +1,11 @@
-import ClassComponent from './components/classComponent/ClassComponent'
+import ArbitraryList from './components/arbitraryList/ArbitraryList'
 import { interestinngLilList } from './data/lists'
 
 function App() {
 
   return (
     <>
-      <ClassComponent listToRender={interestinngLilList} />
+      <ArbitraryList data={interestinngLilList} />
     </>
   )
 }
