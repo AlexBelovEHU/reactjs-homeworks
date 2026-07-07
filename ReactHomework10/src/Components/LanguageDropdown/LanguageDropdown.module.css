@@ -1,0 +1,32 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label {
+  color: #546285;
+  font-size: 14px;
+}
+
+.select {
+  min-width: 140px;
+  height: 40px;
+  border: 1px solid rgba(126,130,143,0.3);
+  border-radius: 999px;
+  padding: 0 14px;
+  background: #fff;
+  color: #08090a;
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .select {
+    min-width: 0;
+    width: 160px;
+  }
+}
