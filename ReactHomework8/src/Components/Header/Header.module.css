@@ -1,0 +1,161 @@
+.header {
+  background: rgba(245, 251, 252, 0.87);
+  padding: 100px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.containerFlex {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  padding: 12px 24px;
+  position: relative;
+  min-height: 580px;
+}
+
+.heroContent {
+  flex: 1 1 50%;
+  max-width: 600px;
+}
+
+.heroH1 {
+  font-size: 60px;
+  line-height: 60px;
+  margin: 0 0 18px 0;
+  color: #08090A;
+  font-weight: 400;
+  letter-spacing: 1.8px;
+}
+
+.brandSpan {
+  color: #35B8BE;
+  font-weight: 400;
+}
+
+.heroParagraph {
+  font-size: 18px;
+  line-height: 24px;
+  color: #546285;
+  margin: 0 0 24px 0;
+  letter-spacing: 0.36px;
+  max-width: 560px;
+}
+
+.buttonWrapper {
+  margin-bottom: 28px;
+}
+
+.button {
+  display: inline-block;
+  background: #35B8BE;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+}
+
+.reviewWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.reviewLogo {
+  width: 110px;
+  height: 27px;
+  display: block;
+}
+
+.reviewText {
+  font-size: 16px;
+  color: #08090A;
+}
+
+.heroImageWrap {
+  flex: 0 0 600px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.heroImage {
+  width: 600px;
+  height: 580px;
+  object-fit: cover;
+  border-radius: 0px;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .containerFlex {
+    flex-direction: column-reverse;
+    text-align: left;
+    min-height: auto;
+    padding-top: 32px;
+  }
+
+  .heroH1 {
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .heroImageWrap {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heroImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .contactLine {
+    font-size: 14px;
+    color: #546285;
+    margin: 12px 0;
+  }
+
+  .phoneWrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .phone {
+    color: #35B8BE;
+    cursor: help;
+    text-decoration: underline;
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background: #0b0b0d;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 80;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .phoneWrapper:hover .tooltip,
+  .phoneWrapper:focus-within .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+}
