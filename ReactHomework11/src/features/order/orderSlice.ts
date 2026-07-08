@@ -82,6 +82,14 @@ const orderSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
+    addItem(state, action: PayloadAction<Omit<OrderItem, 'quantity'>>) {
+      const existing = state.items.find((item) => item.id === action.payload.id)
+      if (existing) {
+        existing.quantity += 1
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 })
+      }
+    },
     updateQuantity(state, action: PayloadAction<UpdateQuantityPayload>) {
       const item = state.items.find((entry) => entry.id === action.payload.id)
 
@@ -131,6 +139,7 @@ const orderSlice = createSlice({
 })
 
 export const {
+  addItem,
   updateQuantity,
   removeItem,
   setDeliveryField,
