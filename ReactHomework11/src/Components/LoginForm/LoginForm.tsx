@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { loginUser } from '../../features/auth/authSlice'
 import styles from './LoginForm.module.css'
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const authStatus = useSelector((state) => state.auth.status)
-  const authMessage = useSelector((state) => state.auth.message)
+  const authStatus = useAppSelector((state) => state.auth.status)
+  const authMessage = useAppSelector((state) => state.auth.message)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const resultAction = await dispatch(loginUser({ username, password }))

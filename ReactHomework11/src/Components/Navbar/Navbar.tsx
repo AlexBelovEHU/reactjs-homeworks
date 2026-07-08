@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { logoutUser } from '../../features/auth/authSlice';
 import styles from './Navbar.module.css';
 
@@ -8,9 +8,9 @@ const getNavLinkClassName = ({ isActive }) =>
   isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink;
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const cartItems = useSelector((state) => state.order.items);
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
+  const cartItems = useAppSelector((state) => state.order.items);
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (

@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import styles from './MenuSection.module.css'
-import { fetchMenuItems } from '../../config/cdn'
+import { fetchMenuItems, type MenuItem } from '../../config/cdn'
 
 const CATEGORY_TABS = ['Dessert', 'Dinner', 'Breakfast']
 
-const MenuSection = ({ onAddToCart }) => {
-  const [menuItems, setMenuItems] = useState({})
+type MenuSectionProps = {
+  onAddToCart?: (item: MenuItem) => void
+}
+
+const MenuSection = ({ onAddToCart }: MenuSectionProps) => {
+  const [menuItems, setMenuItems] = useState<Record<string, MenuItem[]>>({})
   const [activeTab, setActiveTab] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
@@ -44,7 +48,7 @@ const MenuSection = ({ onAddToCart }) => {
     return () => controller.abort()
   }, [])
 
-  const onSetActiveTab = (tab) => {
+  const onSetActiveTab = (tab: string) => {
     setActiveTab(tab)
     setItemsVisible(6)
   }

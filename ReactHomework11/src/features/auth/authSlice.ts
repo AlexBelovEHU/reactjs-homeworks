@@ -3,16 +3,43 @@ import { saveLoggedUserToFirebase } from '../../firebase/saveLoggedUserToFirebas
 
 const AUTH_STORAGE_KEY = 'react-homework7.auth-user'
 
-const readStoredUser = () => {
+export type AuthStatus = 'idle' | 'loading' | 'succeeded' | 'failed'
+
+export type AuthUser = {
+  username: string
+  loggedInAt: string
+}
+
+type LoginCredentials = {
+  username: string
+  password: string
+}
+
+type LoginResult = {
+  user: AuthUser
+  message: string
+}
+
+type AuthState = {
+  currentUser: AuthUser | null
+  status: AuthStatus
+  message: string
+}
+
+const readStoredUser = (): AuthUser | null => {
   try {
     const storedUser = localStorage.getItem(AUTH_STORAGE_KEY)
-    return storedUser ? JSON.parse(storedUser) : null
+    return storedUser ? (JSON.parse(storedUser) as AuthUser) : null
   } catch {
     return null
   }
 }
 
-export const loginUser = createAsyncThunk(
+export const loginUser = createAsyncThunk<
+  LoginResult,
+  LoginCredentials,
+  { rejectValue: string }
+>(
   'auth/loginUser',
   async ({ username, password }, { rejectWithValue }) => {
     const normalizedUserName = username.trim()
@@ -64,13 +91,15 @@ export const loginUser = createAsyncThunk(
   },
 )
 
+const initialState: AuthState = {
+  currentUser: readStoredUser(),
+  status: 'idle',
+  message: '',
+}
+
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    currentUser: readStoredUser(),
-    status: 'idle',
-    message: '',
-  },
+  initialState,
   reducers: {
     logoutUser(state) {
       localStorage.removeItem(AUTH_STORAGE_KEY)
@@ -92,7 +121,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = 'failed'
-        state.message = action.payload || 'Unable to log in right now.'
+        state.message = action.payload ?? 'Unable to log in right now.'
       })
   },
 })

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
   fetchOrderItems,
   removeItem,
@@ -10,8 +10,8 @@ import {
 import styles from './OrderPage.module.css'
 
 const OrderPage = () => {
-  const dispatch = useDispatch()
-  const { items, status, error, street, house, message } = useSelector(
+  const dispatch = useAppDispatch()
+  const { items, status, error, street, house, message } = useAppSelector(
     (state) => state.order,
   )
 
@@ -21,7 +21,7 @@ const OrderPage = () => {
     }
   }, [dispatch, status])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     dispatch(submitOrder())
   }
