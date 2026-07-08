@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import HomePage from './Components/HomePage/HomePage'
+import MenuPage from './Components/MenuPage/MenuPage'
 import LoginForm from './Components/LoginForm/LoginForm'
 import OrderPage from './Components/OrderPage/OrderPage'
 import ProtectedRoute from './Components/ProtectedRoute'
@@ -17,6 +18,7 @@ function App() {
         <main className="appMain">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/menu" element={<MenuPage />} />
             <Route path="/login" element={<LoginForm />} />
             <Route
               path="/order"
