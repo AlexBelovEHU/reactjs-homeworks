@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  --color-bg: #eaf5f8;
+  --color-bg-alt: #f8fcfd;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f7f9;
+  --color-surface-elevated: #ffffff;
+  --color-text: #102336;
+  --color-text-muted: #516782;
+  --color-text-subtle: #6d7f92;
+  --color-border: #d6e3ea;
+  --color-border-strong: rgba(83, 106, 130, 0.28);
+  --color-accent: #168994;
+  --color-accent-strong: #0f7480;
+  --color-accent-contrast: #ffffff;
+  --color-tooltip-bg: #102336;
+  --color-tooltip-text: #f8fcfd;
+  --color-focus: #0f7480;
+  --color-shadow: rgba(20, 54, 74, 0.14);
+}
+
+[data-theme='dark'] {
+  --color-bg: #0b1822;
+  --color-bg-alt: #122535;
+  --color-surface: #152939;
+  --color-surface-muted: #1a3142;
+  --color-surface-elevated: #203a4d;
+  --color-text: #edf5fa;
+  --color-text-muted: #c1d0db;
+  --color-text-subtle: #95aabd;
+  --color-border: #28485b;
+  --color-border-strong: rgba(183, 213, 230, 0.24);
+  --color-accent: #61d3d9;
+  --color-accent-strong: #8de7eb;
+  --color-accent-contrast: #05272b;
+  --color-tooltip-bg: #f3f8fb;
+  --color-tooltip-text: #0b1822;
+  --color-focus: #8de7eb;
+  --color-shadow: rgba(0, 0, 0, 0.38);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top, var(--color-bg-alt) 0%, var(--color-bg) 52%, var(--color-bg) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+a,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+button,
+input,
+a {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}

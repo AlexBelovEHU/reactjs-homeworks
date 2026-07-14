@@ -1,0 +1,56 @@
+.callWrap {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.callButton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px var(--color-shadow);
+  cursor: pointer;
+}
+
+.phoneIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.tooltip {
+  position: absolute;
+  right: 72px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background: var(--color-tooltip-bg);
+  color: var(--color-tooltip-text);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease, transform .12s ease;
+}
+
+.callWrap:hover .tooltip,
+.callWrap:focus-within .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 480px) {
+  .callButton { width: 48px; height: 48px; }
+  .tooltip { right: 64px; font-size: 13px; }
+}

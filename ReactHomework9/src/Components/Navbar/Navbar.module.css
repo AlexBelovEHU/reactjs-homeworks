@@ -1,0 +1,182 @@
+.navbar {
+  background: var(--color-surface);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.navigationContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigationLeft {
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  display: block;
+}
+
+.navigationRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menuButton {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+}
+
+.navMenu {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+.navLinkActive {
+  color: var(--color-accent);
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.themeToggle:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-elevated);
+}
+
+.themeToggleLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.themeToggleValue {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.themeToggleBadge {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-subtle);
+  font-size: 12px;
+}
+
+.authPanel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userLabel {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.logoutButton {
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.cartWrapper {
+  position: relative;
+}
+
+.cartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  color: var(--color-accent-contrast);
+  text-decoration: none;
+  border: none;
+}
+
+.cartIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-accent-contrast);
+}
+
+.cartQuantity {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 6px var(--color-shadow);
+  padding: 0 5px;
+}
+
+@media (max-width: 768px) {
+  .navMenu {
+    display: none;
+  }
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .authPanel {
+    display: none;
+  }
+
+  .themeToggleLabel {
+    display: none;
+  }
+}
